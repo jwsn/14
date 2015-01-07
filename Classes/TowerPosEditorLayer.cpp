@@ -148,7 +148,17 @@ void TowerPosEditorLayer::deleteMonsterPos(PosBase* existPos)//¸ø¶¨Ëþ×ø±ê£¬É¾³ýË
 	this->removeChild(existPos);
 	m_monsterPosList.eraseObject(existPos);
 }
-
+void TowerPosEditorLayer::changeMode()
+{
+	if(m_enMode == enMonsterPos)
+	{
+		m_enMode = enTowerPos;
+	}
+	else
+	{
+		m_enMode = enMonsterPos;
+	}
+}
 
 
 

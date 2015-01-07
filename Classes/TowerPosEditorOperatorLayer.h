@@ -18,8 +18,8 @@ public:
 	static TowerPosEditorOperatorLayer* create(TowerPosEditorLayer* layer);
 	virtual bool init(TowerPosEditorLayer* layer);
 private:
-    //void outputBtnOnClick(Ref*, TouchEventType type);
-
+    void outputBtnOnClick(Ref*, TouchEventType type);
+	void changeModeBtnOnClick(Ref*, TouchEventType type);
 private:
 
 	TowerPosEditorLayer* m_editorLayer;

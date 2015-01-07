@@ -31,11 +31,18 @@ bool TowerPosEditorOperatorLayer::init(TowerPosEditorLayer* layer)
 	//outputBtn->addTouchEventListener(this, toucheventselector(TowerPosEditorOperatorLayer::outputBtnOnClick));
 	return true;
 }
-/*
+
 void TowerPosEditorOperatorLayer::outputBtnOnClick(Ref*, TouchEventType type)
 {
 	if(type == TouchEventType::TOUCH_EVENT_ENDED)
 	{
 		m_editorLayer->outputPosPlistFile();
 	}
-}*/
+}
+void TowerPosEditorOperatorLayer::changeModeBtnOnClick(Ref*, TouchEventType type)
+{
+	if(type == TouchEventType::TOUCH_EVENT_ENDED)
+	{
+		m_editorLayer->changeMode();
+	}
+}

@@ -17,9 +17,15 @@ public:
 	~TowerPosEditorOperatorLayer();
 	static TowerPosEditorOperatorLayer* create(TowerPosEditorLayer* layer);
 	virtual bool init(TowerPosEditorLayer* layer);
+	void draw(Renderer* renderer, const kmMat4 &transform, bool transformupdated);
 private:
+	void onDraw(const kmMat4 &transform, bool transformupdated);
+	CustomCommand _custCommand;
+	//four btn
     void outputBtnOnClick(Ref*, TouchEventType type);
 	void changeModeBtnOnClick(Ref*, TouchEventType type);
+	void nextLevelBtnOnClick(Ref*, TouchEventType type);
+	void preLevelBtnOnClick(Ref*, TouchEventType type);
 private:
 
 	TowerPosEditorLayer* m_editorLayer;

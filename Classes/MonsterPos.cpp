@@ -60,6 +60,7 @@ void MonsterPos::draw(Renderer* renderer, const kmMat4 & transform, bool transfo
 		renderer->addCommand(&_customCommand);
 	}
 }
+//»­Í¼º¯Êý
 void MonsterPos::onDraw(const kmMat4 &transform, bool transformupdated)
 {
 	kmGLPushMatrix();

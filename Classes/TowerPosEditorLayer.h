@@ -14,6 +14,8 @@ public:
 	virtual bool init();
 	void outputPosPlistFile();
 	void changeMode();
+	int nextLvl();
+	int preLvl();
 private:
 	Vector<PosBase*> m_towerPosList;
 	Vector<PosBase*> m_monsterPosList;
@@ -33,7 +35,8 @@ private:
 	PosBase* findExistMonsterPos(Point pos);//根据坐标找到已经存在的塔坐标
 	void createMonsterPos(Point pos);//给定坐标生成塔坐标
 	void deleteMonsterPos(PosBase* existPos);//给定塔坐标，删除塔坐标对象
-
+public:
+	Vector<PosBase*> getMonsterPosList();
 
 };
 #endif

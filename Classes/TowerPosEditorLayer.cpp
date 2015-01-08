@@ -159,7 +159,24 @@ void TowerPosEditorLayer::changeMode()
 		m_enMode = enMonsterPos;
 	}
 }
-
+int TowerPosEditorLayer::nextLvl()
+{
+	deleteAllPos();
+	m_iCurLevel++;
+	loadConfigFile();
+	return m_iCurLevel;
+}
+int TowerPosEditorLayer::preLvl()
+{
+	deleteAllPos();
+	m_iCurLevel--;
+	loadConfigFile();
+	return m_iCurLevel;
+}
+Vector<PosBase*> TowerPosEditorLayer::getMonsterPosList()
+{
+	return m_monsterPosList;
+}
 
 
 

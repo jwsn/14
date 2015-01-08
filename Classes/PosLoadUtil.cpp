@@ -28,11 +28,12 @@ Vector<PosBase*> PosLoadUtil::loadPosWithFile(const char* sFilePath, EnumPosType
 	Vector<PosBase*> posList;
 	ValueMap fileDataMap = FileUtils::getInstance()->getValueMapFromFile(sFilePath);
 	int size = fileDataMap.size();
-	for(int i = 0; i < size; i++)
+	//注意是从1开始
+	for(int i = 1; i <= size; i++)
 	{
 		//将plist文件转化为ValueMap结构的过程
 		Value value = fileDataMap.at(StringUtils::toString(i));
-		ValueMap data = value.asValueMap();
+		ValueMap data =  value.asValueMap();
 		PosBase* posbase = NULL;
 		switch(enPosType)
 		{

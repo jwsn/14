@@ -24,7 +24,7 @@ bool TowerPosEditorOperatorLayer::init(TowerPosEditorLayer* layer)
 		return false;
 	}
 	this->m_editorLayer = layer;
-	auto UI = cocostudio::GUIReader::getInstance()->widgetFromJsonFile("EditorOperate_1/EditorOperate_1.json");//
+	auto UI = cocostudio::GUIReader::getInstance()->widgetFromJsonFile("EditorOperate/EditorOperate_1.ExportJson");
 	this->addChild(UI);
 	UI->setTouchEnabled(false);//UI本身也是控件，大小为400*800，必须有这句话将UI的触摸响应关闭，否则下方所有对象的触摸事件都会被吃掉
 	auto outputBtn = (Button*)Helper::seekWidgetByName(UI, "outputBtn");
@@ -69,7 +69,7 @@ void TowerPosEditorOperatorLayer::preLevelBtnOnClick(Ref*, TouchEventType type)
 		m_editorLayer->preLvl();
 	}
 }
-void TowerPosEditorOperatorLayer::draw(Renderer* renderer, const kmMat4 &transform, bool transformupdated)
+void TowerPosEditorOperatorLayer::draw(Renderer* renderer, const kmMat4 &transform, unsigned int transformupdated)
 {
 	_custCommand.init(_globalZOrder);
 	_custCommand.func = CC_CALLBACK_0(TowerPosEditorOperatorLayer::onDraw, this, transform, transformupdated);

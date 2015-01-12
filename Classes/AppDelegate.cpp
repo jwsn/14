@@ -1,6 +1,6 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
-
+#include "SceneManager.h"
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
@@ -22,16 +22,16 @@ bool AppDelegate::applicationDidFinishLaunching() {
     }
 	glview->setDesignResolutionSize(800, 400, ResolutionPolicy::SHOW_ALL);
     // turn on display FPS
-    director->setDisplayStats(true);
+    director->setDisplayStats(false);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
-
+    //auto scene = HelloWorld::createScene();
     // run
-    director->runWithScene(scene);
+    //director->runWithScene(scene);
+	SceneManager::getInstance()->changeScene(SceneManager::en_TollgateScene);
 
     return true;
 }

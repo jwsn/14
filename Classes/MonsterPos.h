@@ -14,7 +14,7 @@ public:
 	bool init(Point pos);
 	bool init(Point pos, bool isDebug);
 	virtual bool isClickMe(Point pos);
-	void draw(Renderer* renderer, const kmMat4 &transform, bool transformupdated);
+	void draw(Renderer* renderer, const kmMat4 &transform, unsigned int transformupdated);
 private:
 	void onDraw(const kmMat4 &transform, bool transformupdated);
 	CustomCommand _customCommand;

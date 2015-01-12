@@ -1,6 +1,9 @@
 #include "HelloWorldScene.h"
 #include "TowerPos.h"
 #include "TowerPosEditorLayer.h"
+#include "TowerPosEditorOperatorLayer.h"
+#include "EnumStrKey.h"
+#include "I18N.h"
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -10,11 +13,12 @@ Scene* HelloWorld::createScene()
     
     // 'layer' is an autorelease object
 	auto layer = TowerPosEditorLayer::create();
-
-    // add layer as a child to scene
-   // scene->addChild(layer);
-	//TowerPos* pos = TowerPos::create(Point(200, 200), true);
 	scene->addChild(layer, 1);
+
+	auto oplayer = TowerPosEditorOperatorLayer::create(layer);
+	scene->addChild(oplayer, 2);
+
+	log("I18N Test:%s",I18N::getInstance()->getString(en_StrKey_Public_Confirm));
     // return the scene
     return scene;
 }

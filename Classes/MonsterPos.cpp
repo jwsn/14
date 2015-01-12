@@ -51,7 +51,7 @@ bool MonsterPos::init(Point pos, bool isDebug)
 	}while(0);
 	return ret;
 }
-void MonsterPos::draw(Renderer* renderer, const kmMat4 & transform, bool transformupdated)
+void MonsterPos::draw(Renderer* renderer, const kmMat4 & transform, unsigned int transformupdated)
 {
 	if(m_isDebug)
 	{

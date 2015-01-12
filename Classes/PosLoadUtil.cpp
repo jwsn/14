@@ -3,7 +3,7 @@
 #include "EnumPosType.h"
 #include "MonsterPos.h"
 PosLoadUtil* PosLoadUtil::m_PosLoadUtil = NULL;
-PosLoadUtil* PosLoadUtil::getInstace()
+PosLoadUtil* PosLoadUtil::getInstance()
 {
 	if(m_PosLoadUtil == NULL)
 	{

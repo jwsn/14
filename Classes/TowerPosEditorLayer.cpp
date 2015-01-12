@@ -104,13 +104,14 @@ void TowerPosEditorLayer::loadConfigFile()
 	std::string sBG = StringUtils::format("tollgate/level_%d.jpg", m_iCurLevel);
 	Sprite* map = Sprite::create(sBG.c_str());
 	map->setPosition(Point(visibleSize.width/2, visibleSize.height/2));
+	this->addChild(map, 1);
 	//加载塔坐标
 	std::string sTowerPosPath = StringUtils::format("tollgate/towerPos_level_%d.plist", m_iCurLevel);
-	Vector<PosBase*> posList = PosLoadUtil::getInstace()->loadPosWithFile(sTowerPosPath.c_str(), enTowerPos, this, 10, true);
+	Vector<PosBase*> posList = PosLoadUtil::getInstance()->loadPosWithFile(sTowerPosPath.c_str(), enTowerPos, this, 10, true);
 	m_towerPosList.pushBack(posList);
 	//加载怪物坐标
 	std::string sMonsterPosPath = StringUtils::format("tollgate/monsterPos_level_%d.plist", m_iCurLevel);
-	posList = PosLoadUtil::getInstace()->loadPosWithFile(sMonsterPosPath.c_str(), enMonsterPos, this, 10, true);
+	posList = PosLoadUtil::getInstance()->loadPosWithFile(sMonsterPosPath.c_str(), enMonsterPos, this, 10, true);
 	m_monsterPosList.pushBack(posList);
 }
 

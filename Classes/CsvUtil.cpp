@@ -80,7 +80,20 @@ Value CsvUtil::getValue(int iRow, int iCol, const char* csvFilePath)
 	Value colValue = rowVector.at(iCol);
 	return colValue;
 }
+const int CsvUtil::findValueIntWithLine( const char* chValue, int iValueCol, const char* csvFilePath ) {
+    Size csvSize = getFileRowColNum(csvFilePath);
 
+    int iLine = -1;
+    for(int i = 2; i < csvSize.width; i++) {
+        int ID = getInt(i, iValueCol, csvFilePath);
+        if(Value(ID).asString().compare(chValue) == 0) {
+            iLine = i;
+            break;
+        }
+    }
+
+    return iLine;
+}
 
 
 

@@ -17,7 +17,7 @@ public:
 	~TowerPosEditorOperatorLayer();
 	static TowerPosEditorOperatorLayer* create(TowerPosEditorLayer* layer);
 	virtual bool init(TowerPosEditorLayer* layer);
-	void draw(Renderer* renderer, const kmMat4 &transform, bool transformupdated);
+	void draw(Renderer* renderer, const kmMat4 &transform, unsigned int transformupdated);
 private:
 	void onDraw(const kmMat4 &transform, bool transformupdated);
 	CustomCommand _custCommand;

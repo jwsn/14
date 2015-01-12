@@ -1,6 +1,7 @@
 #include "SceneManager.h"
 #include "TowerPosEditorLayer.h"
 #include "HelloWorldScene.h"
+#include "TollgateScene.h"
 SceneManager* SceneManager::mSceneManager = NULL;
 
 SceneManager* SceneManager::getInstance()
@@ -31,6 +32,7 @@ void SceneManager::changeScene(EnumSceneType enSceneType)
 	switch(enSceneType)
 	{
 	case en_TollgateScene:
+		pScene = TollgateScene::createScene();
 		break;
 	case en_TollgateEditorScene:
 		pScene = HelloWorld::createScene();
@@ -48,7 +50,7 @@ void SceneManager::changeScene(EnumSceneType enSceneType)
 	}
 	Director* pDirector = Director::getInstance();
 	Scene* curScene = pDirector->getRunningScene();
-	if(curScene = NULL)
+	if(curScene == NULL)
 	{
 		pDirector->runWithScene(pScene);
 	}

@@ -58,7 +58,7 @@ bool TowerPos::isClickMe(Point pos)
 		return true;
 	return false;
 }
-void TowerPos::draw(Renderer* renderer, const kmMat4 &transform, bool transformUpdated)
+void TowerPos::draw(Renderer* renderer, const kmMat4 &transform, unsigned int transformUpdated)
 {
 	if(m_isDebug)
 	{

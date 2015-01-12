@@ -4,6 +4,7 @@
 using namespace cocos2d;
 class SceneManager:public Ref
 {
+public:
 	enum EnumSceneType{
 		en_TollgateScene,//¹Ø¿¨³¡¾°
 		en_TollgateEditorScene,//¹Ø¿¨±à¼­Æ÷³¡¾°

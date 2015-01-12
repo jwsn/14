@@ -6,7 +6,7 @@ USING_NS_CC;
 class PosLoadUtil:public Node
 {
 public:
-	static PosLoadUtil* getInstace();
+	static PosLoadUtil* getInstance();
 	virtual bool init();
 	Vector<PosBase*> loadPosWithFile(const char* sFilePath, EnumPosType enPosType, Node* container, int iLevel, bool isDebug);
 private:

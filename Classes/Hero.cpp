@@ -2,8 +2,12 @@
 #include "CsvUtil.h"
 #include "EnumHeroPropConfType.h"
 #include "GlobalPath.h"
+#include "Monster.h"
 Hero::Hero()
-{}
+{
+	m_atkMonster = NULL;
+	m_isAtkCoolDown = false;
+}
 Hero::~Hero()
 {}
 Hero* Hero::create(Sprite* sprite)
@@ -80,11 +84,79 @@ bool Hero::initFromCsvFileByID(int iHeroID) {
 
     return bRet;
 }
-
-
-
-
-
+void Hero::checkAtkMonster(float ft, Vector<Monster*> monsterList)
+{
+	if(m_atkMonster != NULL)
+	{
+		if(m_atkMonster->isDead())
+		{
+			monsterList.eraseObject(m_atkMonster);
+			m_atkMonster = NULL;
+			return;
+		}
+		if(m_isAtkCoolDown == false)
+		{
+			atk();
+		}
+		checkAimIsOutOfRange(monsterList);
+	}
+	else
+	{
+		chooseAim(monsterList);
+	}
+}
+void Hero::atk()
+{
+	log("atk !!!!");
+	m_isAtkCoolDown = true;
+	this->scheduleOnce(schedule_selector(Hero::atkCollDownEnd),getiAtkSpeed()/1000.0f);
+}
+void Hero::chooseAim(Vector<Monster*> monsterList)
+{
+	for(auto monster:monsterList)
+	{
+		if(monster->isVisible() && isInAtkRange(monster->getPosition()))
+		{
+			chooseAtkMonster(monster);
+			log("in atk range");
+			break;
+		}
+	}
+}
+bool Hero::isInAtkRange(Point pos)
+{
+	int iDoubleAtkRange = getiAtkRange();//攻击范围
+	Point heroPos = getPosition();
+	float length = pos.getDistanceSq(heroPos);//两点之间的距离
+	if(length <= iDoubleAtkRange*iDoubleAtkRange)
+	{
+		return true;
+	}
+	return false;
+}
+void Hero::chooseAtkMonster(Monster* monster)
+{
+	m_atkMonster = monster;
+}
+void Hero::atkCollDownEnd(float dt)
+{
+	m_isAtkCoolDown = false;
+}
+void Hero::checkAimIsOutOfRange(Vector<Monster*> monsterList)
+{
+	if(m_atkMonster != NULL)
+	{
+		if(isInAtkRange(m_atkMonster->getPosition()) == false)
+		{
+			missAtkMonster();
+		}
+	}
+}
+void Hero::missAtkMonster()
+{
+	log("out of range");
+	m_atkMonster = NULL;
+}
 
 
 

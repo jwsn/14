@@ -21,6 +21,9 @@ bool TollgateMapLayer::init()
 		loadConfig();
 		m_heroMgr = HeroManager::createWithLevel(m_iCurLevel);
 		this->addChild(m_heroMgr, HERO_LAYER_LVL);
+		m_monsterMgr = MonsterManager::createWithLevel(m_iCurLevel);
+		this->addChild(m_monsterMgr, MONSTER_LAYER_LVL);
+		this->schedule(schedule_selector(TollgateMapLayer::logic));
 		ret = true;
 	}while(0);
 	return true;
@@ -35,4 +38,8 @@ void TollgateMapLayer::loadConfig()
 	Sprite* map = Sprite::create(sBG.c_str());
 	map->setPosition(Point(visibleSize.width /2, visibleSize.height / 2));
 	this->addChild(map, 1);
+}
+bool TollgateMapLayer::logic(float dt)
+{
+	m_heroMgr->logic(dt, m_monsterMgr->getMonsterList());
 }

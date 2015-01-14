@@ -77,3 +77,13 @@ TowerBorder* HeroManager::findClickTowerBorder(Point pos)
 	}
 	return NULL;
 }
+void HeroManager::logic(float dt, Vector<Monster*> monsterList)
+{
+	for(auto tBorder:m_towerBorderList)
+	{
+		if(tBorder->getHero() != NULL)
+		{
+			tBorder->getHero()->checkAtkMonster(dt,monsterList);
+		}
+	}
+}

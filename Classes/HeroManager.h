@@ -3,6 +3,7 @@
 #include "cocos2d.h"
 #include "TowerPos.h"
 #include "TowerBorder.h"
+#include "Monster.h"
 #define TOWER_POS_LAYER_LVL 5 //塔坐标的层次
 #define TOWER_BORDER_LAYER_LVL 8 //炮台的层次
 #define TOWER_LAYER_LVL 10 //塔的层次
@@ -25,5 +26,7 @@ private:
 	void createTowerBorder(int iCurLevel);//创建炮台
 	void createTowerPos(Point pos);//给定坐标，生成塔坐标对象
 	TowerBorder* findClickTowerBorder(Point pos);
+	void logic(float dt, Vector<Monster*> monsterList);
+	
 };
 #endif
